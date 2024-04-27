@@ -39,6 +39,20 @@ codigo_esporte_associado INT NOT NULL,
 FOREIGN KEY (codigo_esporte_associado) REFERENCES esporte(codigo_esporte)
 );
 
+CREATE TABLE idiomas(
+codigo_idioma INT NOT NULL PRIMARY KEY,
+nome_idioma VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE atleta_idioma(
+codigo_atleta INT NOT NULL,
+codigo_idioma INT NOT NULL,
+PRIMARY KEY (codi_atleta, codigo_idioma),
+FOREIGN KEY (codigo_atleta) REFERENCES atleta(codigo_atleta),
+FOREIGN KEY (codigo_idioma) REFERENCES idioma(codigo_idioma)
+);
+
+
 INSERT INTO esporte (codigo_esporte, nome_esporte, sigla_coi_esporte) VALUES (1, 'JUDO', 'JU'),
  (2, 'Boxing', 'BX'),
  (3, 'Football', 'FB'),
@@ -68,7 +82,13 @@ INSERT INTO atleta (codigo_atleta, nome_atleta, sexo, codigo_esporte, codigo_pai
 (6, 'Maria de Lourdes', 'F', 1, 1),
 (7, 'Pedro Novaes', 'M', 1, 3);
 
+
+
 SELECT * FROM esporte;
 SELECT * FROM continente;
 SELECT * FROM pais;
 SELECT * FROM atleta;
+SELECT * FROM eventos;
+
+SELECT atleta.nome_atleta, atleta.sexo, pais.nome_oficial_pais FROM atleta
+LEFT JOIN pais on atleta.cogido_pais = codigo_pais; 
