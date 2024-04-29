@@ -200,6 +200,162 @@ SELECT * FROM provas;
 SELECT * FROM tecnico;
 
 
+# 21-1
+-- Crie um SELECT que retorne o nome de cada um dos eventos da olimpíada junto com o nome do esporte associado
+SELECT evento.nome_evento, esporte.nome_esporte
+FROM evento
+INNER JOIN esporte ON
+evento.codigo_esporte = esporte.codigo_esporte;
+
+# 21-2
+-- Faça um SELECT que retorne o nome de todos os atletas da Oceania
+SELECT atleta.nome_atleta, continente.nome_continente
+FROM atleta
+INNER JOIN pais ON
+atleta.codigo_pais = pais.codigo_pais
+INNER JOIN continente ON
+pais.codigo_continente = continente.codigo_continente
+WHERE
+continente.nome_continente = 'Oceania';
+
+# 21-3
+-- Faça um SELECT que retorne o nome e horário de todas as provas do esporte ‘Basketball’
+SELECT prova.nome_prova, prova.hora_inicio_prova
+FROM prova
+INNER JOIN evento ON
+prova.codigo_evento = prova.codigo_evento
+INNER JOIN esporte ON
+evento.codigo_esporte = esporte.codigo_esporte
+WHERE 
+esporte.nome_esporte = 'Basketball';
+
+
+# 21-4
+-- Faça um SELECT que retorne o nome de todos os esportes que terão provas no dia 01/08
+SELECT DISTINCT esporte.nome_esporte
+FROM esporte
+INNER JOIN evento ON
+esporte.codigo_esporte = evento.codigo_esporte
+INNER JOIN prova ON 
+prova.codigo_evento = evento.codigo_evento
+WHERE
+prova.hora_inicio_prova >= '2012-08-02 08:00:00'
+AND prova.hora_inicio_prova < '2012-08-02 23:00:00';
+
+# 21-5
+-- Faça um SELECT que retorne o nome de todos os atletas que falam o idioma português ('Portuguese')
+SELECT atleta.nome_atleta 
+FROM atleta
+INNER JOIN atleta_idioma ON
+atleta.codigo_atleta = atleta_idioma.codigo_atleta
+INNER JOIN idioma ON
+atleta_idioma.codigo_idioma = idioma.codigo_idioma
+WHERE
+idioma.codigo_idioma = 'Portuguese';
+
+# 21-6
+-- Faça um SELECT que retorne o nome de todos os países com atletas competindo em eventos do esporte 'Badminton'
+SELECT DISTINCT pais.nome_oficial_pais
+FROM pais
+INNER JOIN atleta ON
+pais.codigo_pais = atleta.codigo_pais
+INNER JOIN atleta_evento ON
+atleta.codigo_atleta = atleta_evento.codigo_atleta
+INNER JOIN evento ON
+evento.codigo_evento = atleta_evento.codigo_evento
+INNER JOIN esporte ON
+evento.codigo_esporte = esporte.codigo_esporte
+WHERE
+esporte.nome_esporte = 'Badminton';
+
+-- select codigo_atleta, 7 from atleta where codigo_pais = 27;
+
+# 22-1
+-- Crie um SELECT que retorne o nome de cada atleta seguindo do nome do seu país e continente
+SELECT atleta.nome_atleta, pais.nome_oficial_pais, continente.nome_continente
+FROM atleta
+INNER JOIN pais ON
+atleta.codigo_pais = pais.codigo_pais
+LEFT OUTER JOIN continente ON
+pais.codigo_continente = continente.codigo_continente;
+
+# 22-2
+-- Faça um SELECT que retorne o nome de cada atleta seguido do nome de seu técnico
+SELECT atleta.nome_atleta, tecnico.nome_tecnico
+FROM atleta
+LEFT OUTER JOIN tecnico ON
+atleta.codigo_tecnico =  tecnico.codigo_tecnico;
+
+
+# 22-3
+-- Faça um SELECT que retorne o nome e a quantidade de atletas de cada continente 
+SELECT atleta.nome_atleta, continente.nome_continente, count(*)
+FROM atleta
+INNER JOIN pais ON
+atleta.codigo_pais = pais.codigo_pais
+LEFT OUTER JOIN continente ON
+continente.codigo_continente = pais.codigo_continente
+GROUP BY continente.nome_continente;
+
+# 22-4
+-- Faça um SELECT que retorne a quantidade de eventos por esporte
+SELECT esporte.nome_esporte, count(*)
+FROM evento
+INNER JOIN esporte ON
+evento.codigo_esporte =  esporte.codigo_esporte
+GROUP BY esporte.nome_esporte;
+
+# 22-5
+-- Faça um SELECT que retorne a quantidade de provas por esporte
+SELECT esporte.nome_esporte, count(*)
+FROM esporte
+INNER JOIN prova ON
+prova.codigo_esporte = esporte.codigo_esporte
+GROUP BY esporte.nome_esporte;
+
+
+# 22-6
+-- Faça um SELECT que retorne o código e nome de todos os atletas cujos técnicos sejam de outros países
+SELECT esporte.nome_esporte, count(*)
+FROM prova 
+INNER JOIN evento ON
+pais.codigo_evento = evento.codigo_evento
+INNER JOIN esporte es ON
+evento.codigo_esporte = esporte.codigo_esporte
+GROUP BY
+esporte.nome_esporte
+FROM atleta
+LEFT OUTER JOIN tecnico ON
+atleta.codigo_tecnico = tecnico.codigo_tecnico
+WHERE
+atleta.codigo_pais <> tecnico.codigo_pais
+    
+    
+    
+
+update atleta
+set codigo_tecnico = 2
+where
+	sexo = 'M'
+	and codigo_pais = 27
+	and codigo_atleta in (
+		select codigo_atleta
+		from atleta_esporte
+		where codigo_esporte = 33)
+
+    
+    # 22.5 - 1
+-- Crie uma SELECT que retorne o nome de todos os alunos que participam de alguma disciplina do curso "JOVEM PROGRAMADOR"  
+# 22.5 - 2
+-- CRIE um SELECT que retorne a quantidade de alunos por disciplina 
+# 22.5 - 3
+-- Faça um SELECT que retorne o nome de todos os alunos que frenquentam disciplina na sala de número 207
+# 22.5 - 4 
+-- Faça um SELECT que retorne o nome de todos os alunos do Professor "Nazareno Pacheco" leciona 
+# 22.5 - 5
+-- Faça um SELECT que retorne o nome de todos os alunos do Professor "Nazareno Pacheco" (ou seja, todos os alunos que frequentam alguma disciplina dada por esse professor)
+
+
 -- Crie um SELECT que retorne o nome de cada um dos eventos da olimpíada junto com o nome do esporte associado*/
 SELECT evento.nome_evento, esporte.nome_esporte
 FROM evento
