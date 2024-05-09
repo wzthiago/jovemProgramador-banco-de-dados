@@ -2,6 +2,6 @@
 
 - Criação do Primeiro Modelo 
 
-Alunos: G , Guilherme, Marco Aurélio, Lorenzo, Thiago
+Alunos: G, Guilherme, Lorenzo, Marco Aurélio, Thiago
 
-<img src="./img/java.png"/>
+<img src="./img/modelo-01.png"/>
