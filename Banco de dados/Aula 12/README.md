@@ -3,4 +3,4 @@
 - Criação do Primeiro Modelo 
 
 <img src="./img/modelo-01.png"/>
-Alunos: G, Guilherme, Lorenzo, Marco Aurélio, Thiago
+Alunos: Eduardo, Guilherme, Lorenzo, Marco Aurélio, Thiago.
