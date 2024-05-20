@@ -1,5 +1,5 @@
 # Trabalho de Modelagem de Banco de Dados: Setor RH - Senac
-- Alunos: Eduardo, Guilherme, Lorenzo, Marco Aurélio, Thiago de Souza.
+- Alunos: Eduardo, Guilherme, Lorenzo Rover, Marco Aurélio, Thiago de Souza.
 
 <a href="#"><img align="center" src="./gif/bancodedados01.gif" width="300 " height="300" /></a>
 
