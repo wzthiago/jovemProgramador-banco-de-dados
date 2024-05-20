@@ -45,7 +45,7 @@ As restrições ajudam a assegurar que os dados inseridos, atualizados ou deleta
 
 - Uma delas é a integridade de entidade, onde cada tabela tem uma chave primária que identifica unicamente cada registro.
 - Temos também as colunas que não podem ter valores nulos, são definidas com a restrição NOT NULL.
-- As chaves estrangeiras(FOREING KEY), assegura que um valor em uma coluna ou conjunto de colunas corresponda a um valor em ua chave primária em outra tabela. 
+- As chaves estrangeiras(FOREING KEY), assegura que um valor em uma coluna ou conjunto de colunas corresponda a um valor em uma chave primária em outra tabela. 
 - Além de ferramentas automatizadas para gestão de esquemas, assegurando que o banco de dados se mantenha íntegro e eficiente ao longo do tempo.
 
 > #### Desenvolvimento e Manutenção:
